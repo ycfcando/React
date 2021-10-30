@@ -1,4 +1,5 @@
 import React from "react";
 import { render } from "react-dom";
-import Button from "C/Button";
-render(<Button title="按钮" />, document.getElementById("app"));
+import BasicLayout from "@p/BasicLayout";
+
+render(<BasicLayout />, document.getElementById("app"));
