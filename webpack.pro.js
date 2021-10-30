@@ -51,6 +51,17 @@ module.exports = {
         loader: "babel-loader",
         options: {
           presets: ["@babel/preset-env", "@babel/preset-react"],
+          plugins: [
+            [
+              "import",
+              {
+                libraryName: "antd",
+                libraryDirectory: "es",
+                style: true,
+              },
+              "antd",
+            ],
+          ],
         },
       },
       {
@@ -58,27 +69,22 @@ module.exports = {
         loader: "babel-loader",
         options: {
           presets: ["@babel/preset-env"],
+          plugins: [
+            [
+              "import",
+              {
+                libraryName: "antd",
+                libraryDirectory: "es",
+                style: true,
+              },
+              "antd",
+            ],
+          ],
         },
       },
       {
         test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: ["autoprefixer", "cssnano"],
-              },
-            },
-          },
-        ],
-      },
-      {
-        test: /\.less$/,
+        exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -95,7 +101,75 @@ module.exports = {
               },
             },
           },
-          "less-loader",
+        ],
+      },
+      {
+        test: /\.css$/,
+        exclude: [/src/],
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: ["autoprefixer", "cssnano"],
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: /\.less$/,
+        exclude: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+            },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: ["autoprefixer", "cssnano"],
+              },
+            },
+          },
+          {
+            loader: "less-loader",
+            options: {
+              lessOptions: {
+                javascriptEnabled: true, // 允许链式调用的换行
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: /\.less$/,
+        exclude: [/src/],
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: ["autoprefixer", "cssnano"],
+              },
+            },
+          },
+          {
+            loader: "less-loader",
+            options: {
+              lessOptions: {
+                javascriptEnabled: true, // 允许链式调用的换行
+              },
+            },
+          },
         ],
       },
       {

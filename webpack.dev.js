@@ -31,6 +31,7 @@ module.exports = {
     //端口号
     port: 8888,
   },
+  devtool: "source-map",
   optimization: {
     minimizer: [
       new TerserPlugin({
@@ -96,20 +97,49 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
+            options: {
+              modules: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.css$/,
+        exclude: [/src/],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.less$/,
+        exclude: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+            },
+          },
+          {
+            loader: "less-loader",
+            options: {
+              lessOptions: {
+                javascriptEnabled: true, // 允许链式调用的换行
+              },
+            },
           },
         ],
       },
       {
         test: /\.less$/,
+        exclude: [/src/],
         use: [
           MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-          },
+          "css-loader",
           {
             loader: "less-loader",
             options: {
