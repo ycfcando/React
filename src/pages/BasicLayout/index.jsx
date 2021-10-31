@@ -1,6 +1,7 @@
 import React from "react";
 import { Layout, Menu, Breadcrumb } from "antd";
 import "./style.less";
+import { navRead } from "@/utils/read.js";
 
 const { Header, Content, Footer } = Layout;
 
@@ -11,7 +12,7 @@ function BasicLayout(props) {
       <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
         <div className="logo" />
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
-          <Menu.Item key="1">{nav?.name}</Menu.Item>
+          <Menu.Item key="1">{navRead(nav)}</Menu.Item>
           <Menu.Item key="2">nav 2</Menu.Item>
           <Menu.Item key="3">nav 3</Menu.Item>
         </Menu>
