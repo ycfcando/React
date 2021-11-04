@@ -34,7 +34,7 @@ const commomConfig = {
         nodeModuleChunkCss: {
           name: "chunkCss/commonCss", // 指定文件夹输出
           chunks: "all",
-          test: /[\\/]node_modules[\\/][\w\W]+\.css$/, // 正则匹配node_module下的css文件
+          test: /[\\/]node_modules[\\/][\w\W]+\.(css|less)$/, // 正则匹配node_module下的css文件
           reuseExistingChunk: true,
           priority: -10,
         },
