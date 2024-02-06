@@ -11,7 +11,7 @@ const commomConfig = {
     app: "./src/app.tsx",
   },
   output: {
-    path: path.resolve(__dirname, "../build"),
+    path: path.resolve(__dirname, "../build/js"),
     filename: "[name].bundle.js",
     clean: true,
   },
@@ -30,14 +30,14 @@ const commomConfig = {
     splitChunks: {
       cacheGroups: {
         nodeModuleChunkCss: {
-          name: "chunkCss/commonCss", // 指定文件夹输出
+          name: "chunk_css/common_css", // 指定文件夹输出
           chunks: "all",
-          test: /[\\/]node_modules[\\/][\w\W]+\.(css|less)$/, // 正则匹配node_module下的css文件
+          test: /[\\/]node_modules[\\/][\w\W]+\.(css)$/, // 正则匹配node_module下的css文件
           reuseExistingChunk: true,
           priority: -10,
         },
         nodeModuleChunkJs: {
-          name: "chunkJs/commonJs",
+          name: "chunk_js/common_js",
           chunks: "all",
           test: /[\\/]node_modules[\\/]/,
           reuseExistingChunk: true,
@@ -94,7 +94,7 @@ const commomConfig = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: "[name].bundle.css" }),
+    new MiniCssExtractPlugin({ filename: "css/[name].bundle.css" }),
     new HtmlWebpackPlugin({ template: "public/app.html" }),
   ],
 };
