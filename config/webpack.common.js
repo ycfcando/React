@@ -8,7 +8,7 @@ const devConfig = require("./webpack.dev.js");
 
 const commomConfig = {
   entry: {
-    app: "./src/app.jsx",
+    app: "./src/app.tsx",
   },
   output: {
     path: path.resolve(__dirname, "../build"),
@@ -18,10 +18,8 @@ const commomConfig = {
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "../src"),
-      "@p": path.resolve(__dirname, "../src/pages"),
-      "@c": path.resolve(__dirname, "../src/components"),
     },
-    extensions: [".js", ".json", ".jsx"],
+    extensions: ["js", ".ts", ".tsx"],
   },
   optimization: {
     minimizer: [
@@ -51,38 +49,24 @@ const commomConfig = {
   module: {
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.ts$/,
+        exclude: /node_modules/,
         loader: "babel-loader",
         options: {
-          presets: ["@babel/preset-env", "@babel/preset-react"],
-          plugins: [
-            [
-              "import",
-              {
-                libraryName: "antd",
-                libraryDirectory: "es",
-                style: true,
-              },
-              "antd",
-            ],
-          ],
+          presets: ["@babel/preset-env", "@babel/preset-typescript"],
         },
       },
       {
-        test: /\.js$/,
+        test: /\.tsx$/,
+        exclude: /node_modules/,
         loader: "babel-loader",
         options: {
-          presets: ["@babel/preset-env"],
-          plugins: [
-            [
-              "import",
-              {
-                libraryName: "antd",
-                libraryDirectory: "es",
-                style: true,
-              },
-              "antd",
-            ],
+          presets: [
+            "@babel/preset-env", 
+            ["@babel/preset-react", {
+              runtime: 'automatic',
+            }], 
+            "@babel/preset-typescript"
           ],
         },
       },
@@ -95,83 +79,6 @@ const commomConfig = {
             loader: "css-loader",
             options: {
               modules: true,
-            },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: ["autoprefixer", "cssnano"],
-              },
-            },
-          },
-        ],
-      },
-      {
-        test: /\.css$/,
-        exclude: [/src/],
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: ["autoprefixer", "cssnano"],
-              },
-            },
-          },
-        ],
-      },
-      {
-        test: /\.less$/,
-        exclude: /node_modules/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-            },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: ["autoprefixer", "cssnano"],
-              },
-            },
-          },
-          {
-            loader: "less-loader",
-            options: {
-              lessOptions: {
-                javascriptEnabled: true, // 允许链式调用的换行
-              },
-            },
-          },
-        ],
-      },
-      {
-        test: /\.less$/,
-        exclude: [/src/],
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: ["autoprefixer", "cssnano"],
-              },
-            },
-          },
-          {
-            loader: "less-loader",
-            options: {
-              lessOptions: {
-                javascriptEnabled: true, // 允许链式调用的换行
-              },
             },
           },
         ],
