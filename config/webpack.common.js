@@ -11,8 +11,8 @@ const commomConfig = {
     app: "./src/app.tsx",
   },
   output: {
-    path: path.resolve(__dirname, "../build/js"),
-    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "../build"),
+    filename: "./js/[name].bundle.js",
     clean: true,
   },
   resolve: {

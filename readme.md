@@ -20,6 +20,14 @@
   - css module
 
 ### 高级
+1. 构建文件分离
+ - 业务js文件
+ - 业务css文件
+ - 单页面html文件
+ - node_modulesjs文件
+ - node_modulescss文件
+ - 静态文件(图片/字体)
+ - 构建运行时文件
 
 ## webpack知识点
 
