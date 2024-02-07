@@ -52,4 +52,6 @@ eslint-import-resolver-typescript:赋予校验导入导出别名能力，以及i
 eslint-plugin-react:校验react语法
 @typescript-eslint/eslint-plugin: eslint校验ts插件
 @typescript-eslint/parser:eslint的ts语法解析器
-eslint-plugin-n: node的eslint校验，主要是让前端node和brower规则一致
+eslint-plugin-n:node的eslint校验，主要是让前端node和brower规则一致
+eslint-plugin-promise:promise和async/await相关eslint规范
+eslint-config-standard: 社区推荐规范配置
