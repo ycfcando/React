@@ -29,6 +29,17 @@
  - 静态文件(图片/字体)
  - 构建运行时文件
 
+2. 目录结构
+ - .vscode 项目vscode配置
+ - config 项目webpack配置
+ - public 项目构建静态文件
+ - src 源码
+ - eslintrc.js eslint配置
+ - .gitignore git忽略文件
+ - package.json npm配置
+ - readme.md 项目说明
+ - tsconfig.json ts配置
+
 ## webpack知识点
 
 1. 支持css
