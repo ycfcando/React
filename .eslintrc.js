@@ -23,9 +23,7 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
-    'react/display-name': 0,
-    'import/named': 2,
-    'import/no-unresolved': 2
+    'react/display-name': 0
   },
   settings: {
     'import/resolver': {
