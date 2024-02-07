@@ -5,11 +5,17 @@
 ### 基础
 1. Typescript Latest
  - 项目源码不支持js
+
 2. React18
  - react文件不在需要引入react
  - 项目不支持jsx文件
+
 3. 静态文件(图片&字体)
+
 4. 语法校验(提示&格式化&校验)
+  - ts语法检查
+  - react语法检查
+  - import/export 检查
 5. css
   - css module
 
@@ -40,4 +46,10 @@ webpack-merge:合并webpack配置
 asset/resource:webpack自带的静态资源处理工具，可以处理图片和字体文件等
 
 7. 语法校验
-
+eslint:eslint语法校验核心包，提供语法书扫描处理能力
+eslint-plugin-import:校验导入导出能力
+eslint-import-resolver-typescript:赋予校验导入导出别名能力，以及importts的支持
+eslint-plugin-react:校验react语法
+@typescript-eslint/eslint-plugin: eslint校验ts插件
+@typescript-eslint/parser:eslint的ts语法解析器
+eslint-plugin-n: node的eslint校验，主要是让前端node和brower规则一致

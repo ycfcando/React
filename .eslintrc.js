@@ -5,8 +5,10 @@ module.exports = {
     es2021: true
   },
   extends: [
-    'plugin:react/recommended',
-    'standard'
+    'plugin:react/jsx-runtime',
+    'standard',
+    'plugin:import/errors',
+    'plugin:import/warnings'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -21,6 +23,13 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
-    'react/display-name': false
+    'react/display-name': 0,
+    'import/named': 2,
+    'import/no-unresolved': 2
+  },
+  settings: {
+    'import/resolver': {
+      typescript: true
+    }
   }
 }
