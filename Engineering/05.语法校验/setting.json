@@ -1,0 +1,12 @@
+{
+  "typescript.validate.enable": false,
+  "javascript.validate.enable": false,
+  // 保存后自动修复格式  
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }, 
+  "eslint.validate": [
+    "typescript",
+    "typescriptreact"
+  ],
+}
