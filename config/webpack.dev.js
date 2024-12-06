@@ -1,6 +1,9 @@
-const path = require("path");
+import { fileURLToPath } from "url";
+import path, { dirname } from "path";
 
-module.exports = {
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+export default {
   mode: "development",
   target: "web",
   devServer: {

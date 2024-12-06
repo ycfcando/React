@@ -1,25 +1,28 @@
-const path = require('path');
-const { merge } = require('webpack-merge');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const prodConfig = require('./webpack.prod.js');
-const devConfig = require('./webpack.dev.js');
+import { fileURLToPath } from "url";
+import path, { dirname } from "path";
+import { merge } from "webpack-merge";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import TerserPlugin from "terser-webpack-plugin";
+import prodConfig from "./webpack.prod.js";
+import devConfig from "./webpack.dev.js";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const commomConfig = {
   entry: {
-    app: './src/app.tsx',
+    app: "./src/app.tsx",
   },
   output: {
-    path: path.resolve(__dirname, '../build'),
-    filename: './js/[name].bundle.js',
+    path: path.resolve(__dirname, "../build"),
+    filename: "./js/[name].bundle.js",
     clean: true,
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '../src'),
+      "@": path.resolve(__dirname, "../src"),
     },
-    extensions: ['.js', '.ts', '.tsx'],
+    extensions: [".js", ".ts", ".tsx"],
   },
   optimization: {
     minimizer: [
@@ -30,15 +33,15 @@ const commomConfig = {
     splitChunks: {
       cacheGroups: {
         nodeModuleChunkCss: {
-          name: 'chunk_css/common_css', // 指定文件夹输出
-          chunks: 'all',
+          name: "chunk_css/common_css", // 指定文件夹输出
+          chunks: "all",
           test: /[\\/]node_modules[\\/][\w\W]+\.(css)$/, // 正则匹配node_module下的css文件
           reuseExistingChunk: true,
           priority: -10,
         },
         nodeModuleChunkJs: {
-          name: 'chunk_js/common_js',
-          chunks: 'all',
+          name: "chunk_js/common_js",
+          chunks: "all",
           test: /[\\/]node_modules[\\/]/,
           reuseExistingChunk: true,
           priority: -20,
@@ -51,25 +54,25 @@ const commomConfig = {
       {
         test: /\.ts$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         options: {
-          presets: ['@babel/preset-env', '@babel/preset-typescript'],
+          presets: ["@babel/preset-env", "@babel/preset-typescript"],
         },
       },
       {
         test: /\.tsx$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         options: {
           presets: [
-            '@babel/preset-env',
+            "@babel/preset-env",
             [
-              '@babel/preset-react',
+              "@babel/preset-react",
               {
-                runtime: 'automatic',
+                runtime: "automatic",
               },
             ],
-            '@babel/preset-typescript',
+            "@babel/preset-typescript",
           ],
         },
       },
@@ -79,33 +82,33 @@ const commomConfig = {
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               modules: true,
             },
           },
-          'sass-loader',
+          "sass-loader",
         ],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: 'css/[name].bundle.css' }),
-    new HtmlWebpackPlugin({ template: 'public/app.html' }),
+    new MiniCssExtractPlugin({ filename: "css/[name].bundle.css" }),
+    new HtmlWebpackPlugin({ template: "public/app.html" }),
   ],
 };
 
-module.exports = function (env) {
+export default function (env) {
   const isProd = env.production;
   const mergeConfig = isProd ? prodConfig : devConfig;
   const resultConfig = merge(commomConfig, mergeConfig);
   return resultConfig;
-};
+}

@@ -28,6 +28,6 @@
 2. eslint-config-prettier：禁用冲突的 eslint 配置。
 
 
-#### 在 IDE 集成
+### 在 IDE 集成
 方案：VSCode ESLint 插件
 1. ESLint：VSCode 插件，用于在编辑器上使用 ESLint
