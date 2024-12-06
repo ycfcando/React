@@ -4,6 +4,7 @@ import { merge } from "webpack-merge";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
+import ESLintPlugin from "eslint-webpack-plugin";
 import prodConfig from "./webpack.prod.js";
 import devConfig from "./webpack.dev.js";
 
@@ -103,6 +104,15 @@ const commomConfig = {
   plugins: [
     new MiniCssExtractPlugin({ filename: "css/[name].bundle.css" }),
     new HtmlWebpackPlugin({ template: "public/app.html" }),
+    new ESLintPlugin({
+      configType: "flat", // eslint 配置文件类型
+      overrideConfigFile: "eslint.config.js", // eslint 配置文件路径
+      extensions: ["tsx", "ts"], // 指定要检查的文件类型
+      fix: false, // 启用自动修复功能
+      cache: true, // 启用缓存，提高检查性能
+      exclude: "node_modules", // 排除的目录
+      failOnError: true, // 如果有错误则使构建失败
+    }),
   ],
 };
 

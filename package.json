@@ -25,6 +25,7 @@
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7",
+    "eslint-webpack-plugin": "^4.2.0",
     "html-webpack-plugin": "^5",
     "mini-css-extract-plugin": "^2",
     "sass": "^1",
