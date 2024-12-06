@@ -1,7 +1,3 @@
-import { FC } from 'react'
-
-export default function (): FC {
-  return (
-    <button>测试button</button>
-  )
-};
+export default function Demo() {
+  return <button>测试button</button>;
+}

@@ -5,8 +5,5 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   }, 
-  "eslint.validate": [
-    "typescript",
-    "typescriptreact"
-  ],
+  "eslint.validate": ["javascript", "typescript", "javascriptreact", "typescriptreact"]
 }
