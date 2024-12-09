@@ -26,3 +26,4 @@ git add [filePath]
 2. 暂存区-本地仓库
 git commit
 3. 本地仓库-远程仓库
+git push [origin] [branchName]
