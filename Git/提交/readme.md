@@ -6,7 +6,7 @@
 常用的分支命令
 1. 创建分支：git branch [branchName]
 2. 删除分支：git branch -d [branchName]
-3. 合并分支：git merge [branchName]
+3. 合并分支：git merge [branchName] (将branchName分支合并当前分支)
 
 ### git三个阶段
 工作区-暂存区-本地仓库
